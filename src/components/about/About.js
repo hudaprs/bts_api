@@ -16,6 +16,7 @@ const About = () => {
             href='https://github.com/hudaprs'
             className='fa-2x'
             target='_blank'
+            rel='noopener noreferrer'
           >
             <span className='fab fa-github'></span>
           </a>
