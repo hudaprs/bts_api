@@ -19,7 +19,7 @@ const CustomRoute = ({ loading, component: Component, ...rest }) => {
 }
 
 CustomRoute.propTypes = {
-  token: PropTypes.bool.isRequired,
+  token: PropTypes.string,
   loading: PropTypes.bool.isRequired
 }
 

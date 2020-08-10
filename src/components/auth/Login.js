@@ -9,7 +9,7 @@ import { setUserData, login } from "../../redux/actions/auth-actions"
 // Components
 import Alert from "../alert/Alert"
 
-const Login = ({ auth: { userData, loading, token }, setUserData, login }) => {
+const Login = ({ auth: { userData, loading }, setUserData, login }) => {
   useEffect(() => {
     document.title = "BTS - API - Login"
   }, [])

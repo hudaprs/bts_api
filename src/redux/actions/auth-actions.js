@@ -4,7 +4,8 @@ import {
   CLEAR_USER_DATA,
   LOGIN,
   REGISTER,
-  AUTH_ERROR
+  AUTH_ERROR,
+  LOGOUT
 } from "../types/auth-types"
 
 // Redux - Actions
@@ -60,4 +61,8 @@ export const register = (userData) => async (dispatch) => {
     dispatch(setAlert("red", err.response.data.errorMessage))
     dispatch({ type: AUTH_ERROR, payload: err.response.data.errorMessage })
   }
+}
+
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOGOUT })
 }

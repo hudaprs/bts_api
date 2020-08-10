@@ -18019,10 +18019,11 @@ video {
           animation: bounce 1s infinite;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+
 body {
-  --bg-opacity: 1;
-  background-color: #a0aec0;
-  background-color: rgba(160, 174, 192, var(--bg-opacity));
+  font-family: "Roboto", sans-serif;
+  background-color: #f4f4f4;
 }
 
 @media (min-width: 640px) {

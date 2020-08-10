@@ -4,7 +4,8 @@ import {
   LOGIN,
   REGISTER,
   AUTH_ERROR,
-  SET_LOADING
+  SET_LOADING,
+  LOGOUT
 } from "../types/auth-types"
 
 const initialState = {
@@ -60,6 +61,8 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         loading: false
       }
+    case LOGOUT:
+      return localStorage.removeItem("token")
     default:
       return state
   }
