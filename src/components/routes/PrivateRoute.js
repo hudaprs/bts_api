@@ -3,28 +3,25 @@ import { Route, Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import PropTypes from "prop-types"
 
-const CustomRoute = ({ loading, component: Component, ...rest }) => {
+const PrivateRoute = ({ token, loading, component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) =>
-        !localStorage.token && !loading ? (
-          <Redirect to='/login' />
-        ) : (
-          <Component {...props} />
-        )
+        !token && !loading ? <Redirect to='/login' /> : <Component {...props} />
       }
     />
   )
 }
 
-CustomRoute.propTypes = {
+PrivateRoute.propTypes = {
   token: PropTypes.string,
   loading: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => ({
+  token: state.auth.token,
   loading: state.auth.loading
 })
 
-export default connect(mapStateToProps)(CustomRoute)
+export default connect(mapStateToProps)(PrivateRoute)

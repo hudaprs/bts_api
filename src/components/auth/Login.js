@@ -9,7 +9,7 @@ import { setUserData, login } from "../../redux/actions/auth-actions"
 // Components
 import Alert from "../alert/Alert"
 
-const Login = ({ auth: { userData, loading }, setUserData, login }) => {
+const Login = ({ auth: { token, userData, loading }, setUserData, login }) => {
   useEffect(() => {
     document.title = "BTS - API - Login"
   }, [])
@@ -22,7 +22,7 @@ const Login = ({ auth: { userData, loading }, setUserData, login }) => {
     login(userData)
   }
 
-  if (localStorage.token) {
+  if (token) {
     return <Redirect to='/' />
   }
 

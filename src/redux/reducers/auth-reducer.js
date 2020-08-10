@@ -5,7 +5,8 @@ import {
   REGISTER,
   AUTH_ERROR,
   SET_LOADING,
-  LOGOUT
+  LOGOUT,
+  LOAD_USER
 } from "../types/auth-types"
 
 const initialState = {
@@ -61,8 +62,21 @@ export default (state = initialState, { type, payload }) => {
         ...state,
         loading: false
       }
+    case LOAD_USER:
+      return {
+        ...state,
+        isAuthenticated: true,
+        token: payload,
+        loading: false
+      }
     case LOGOUT:
-      return localStorage.removeItem("token")
+      localStorage.removeItem("token")
+      return {
+        ...state,
+        isAuthenticated: false,
+        token: null,
+        loading: false
+      }
     default:
       return state
   }

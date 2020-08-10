@@ -9,7 +9,11 @@ import { setUserData, register } from "../../redux/actions/auth-actions"
 // Components
 import Alert from "../alert/Alert"
 
-const Register = ({ auth: { userData, loading }, setUserData, register }) => {
+const Register = ({
+  auth: { userData, loading, token },
+  setUserData,
+  register
+}) => {
   useEffect(() => {
     document.title = "BTS - API - Register"
   }, [])
@@ -22,7 +26,7 @@ const Register = ({ auth: { userData, loading }, setUserData, register }) => {
     register(userData)
   }
 
-  if (localStorage.token) {
+  if (token) {
     return <Redirect to='/' />
   }
 

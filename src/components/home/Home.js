@@ -42,7 +42,7 @@ const Home = ({
 
   return (
     <MainLayout>
-      <div className='flex w-full'>
+      <div className='flex w-full px-4 md:px-0'>
         <div className='m-auto'>
           <h3 className='text-4xl text-center mb-6'>Checklist App</h3>
 
@@ -81,7 +81,10 @@ const Home = ({
             </div>
           ) : checklists && checklists.length !== 0 ? (
             checklists.map((check) => (
-              <div className='w-full flex justify-between border-b border-black mt-6 p-3 mb-2'>
+              <div
+                className='w-full flex justify-between border-b border-black mt-6 p-3 mb-2'
+                key={check.id}
+              >
                 <p>{check.name}</p>
                 <em
                   className='fas fa-times cursor-pointer'

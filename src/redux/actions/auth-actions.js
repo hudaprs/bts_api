@@ -5,7 +5,8 @@ import {
   LOGIN,
   REGISTER,
   AUTH_ERROR,
-  LOGOUT
+  LOGOUT,
+  LOAD_USER
 } from "../types/auth-types"
 
 // Redux - Actions
@@ -30,6 +31,12 @@ export const setUserData = (userData) => (dispatch) => {
   })
 }
 
+export const autoLogin = () => (dispatch) => {
+  if (localStorage.token) {
+    dispatch({ type: LOAD_USER, payload: localStorage.token })
+  }
+}
+
 export const login = (userData) => async (dispatch) => {
   dispatch(setLoading(true))
 
@@ -42,6 +49,7 @@ export const login = (userData) => async (dispatch) => {
     setAuthToken(logging.data.data.token)
     dispatch({ type: LOGIN, payload: logging.data })
     dispatch({ type: CLEAR_USER_DATA })
+    dispatch(autoLogin())
   } catch (err) {
     dispatch(setAlert("red", err.response.data.errorMessage))
     dispatch({ type: AUTH_ERROR, payload: err.response.data.errorMessage })
