@@ -1,11 +1,12 @@
 import React from "react"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 // Tailwind
 import "./assets/styles/tailwind.css"
 
-// Components
-import Dashboard from "./components/dashboard/Dashboard"
+// Routes
+import Auth from "./components/routes/Auth"
+import Main from "./components/routes/Main"
 
 // Redux
 import { Provider } from "react-redux"
@@ -15,9 +16,8 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <Switch>
-          <Route exact path='/' component={Dashboard} />
-        </Switch>
+        <Route exact component={Main} />
+        <Route exact component={Auth} />
       </Router>
     </Provider>
   )
